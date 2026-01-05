@@ -7,7 +7,7 @@ export const pageWrapper = ele => {
     <>
       <Header />
       {ele}
-      <Footer />
+        <Footer />
     </>
   );
 };

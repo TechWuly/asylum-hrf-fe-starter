@@ -1,39 +1,178 @@
-// import pieChart from '../../../assets/pie-chart.png';
-// import lineGraph from '../../../assets/line-graph.png';
-// import barGraph from '../../../assets/bar-graph.png';
-// import paperStack from '../../../assets/paper-stack.jpg';
+import pieChart from '../../../assets/pie-chart.png';
+import lineGraph from '../../../assets/line-graph.png';
+import barGraph from '../../../assets/bar-graph.png';
+import paperStack from '../../../assets/paper-stack.jpg'; // Add this import at top
+
+
 import { useNavigate } from 'react-router-dom';
 import { useDownloadData } from '../../../hooks/useDownloadData.js';
-import {decodeBase64} from '../../../utils/decodeBase64.js';
+import { decodeBase64 } from '../../../utils/decodeBase64.js';
 
-/**
- * TODO: Ticket 1:
- * Implement structure and styles of the Landing page using Tailwind
- * Implement any button functionality implied by the landing page screenshot example (tickets/examples)
- */
 export const LandingPage = () => {
   const navigate = useNavigate();
   const { downloadCSV } = useDownloadData();
 
   const scrollToTop = () => {
-    let scrollStep = -window.scrollY / 20; // Adjust the divisor for speed
-    let scrollInterval = setInterval(() => {
-      if (window.scrollY === 0) {
-        clearInterval(scrollInterval);
-      } else {
-        window.scrollBy(0, scrollStep);
-      }
-    }, 10); // Adjust the interval time for smoothness
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleReadMore = () => {
-    // TODO: navigate to the humanrightsfirst.org homepage
+    window.open('https://www.humanrightsfirst.org/', '_blank');
   };
 
   return (
-    <div className='flex-c w-[100vw] secondary-c'>
-      Landing Page
-      <div>{'Type this into Canvas: ' + decodeBase64('VGltZTJDb2RlIQ==')}</div>
+    <div className="flex-c w-[100vw] secondary-">
+
+      {/* Hero Section - Part 1 */}
+      <section className="primary-c text-white py-16 px-8 md:px-16">
+        <div className="flex-c mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Asylum Office Grant Rate Tracker
+          </h1>
+          <h3 className="text-white"> 
+            The Asylum Office Grant Rate Tracker provides asylum seekers, researchers, 
+            policymakers, and the public an interactive tool to explore USCIS data on 
+            Asylum Office decisions.
+          </h3>
+        </div>
+      </section>
+
+
+           {/* Feature Cards Section - Part 2 */}
+      <section className="graphs-section flex-c pt-10">
+  <div className="flex-c">
+    <div className="flex justify-center m-14 gap-20 text-2xl">
+      {/* Card 1 */}
+      <div className="flex-c gap-3">
+        <img 
+          src={barGraph} 
+          alt="Bar graph" 
+          className="h-[300px] w-[500px]"
+        />
+        <h3>Search Grant Rates By Office</h3>
+      </div>
+
+      {/* Card 2 */}
+      <div className="flex-c gap-3">
+        <img 
+          src={pieChart} 
+          alt="Pie chart" 
+          className="h-[300px] contain-content"
+        />
+        <h3>Search Grant Rates By Nationality</h3>
+      </div>
+
+      {/* Card 3 */}
+      <div className="flex-c gap-3">
+        <img 
+          src={lineGraph} 
+          alt="Line graph" 
+          className="h-[300px] w-[500px]"
+        />
+        <h3>Search Grant Rates Over Time</h3>
+      </div>
     </div>
-  );
-};
+
+    {/* Buttons */}
+    <div className="flex align-center mx-auto gap-8">
+      <button 
+        className="bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold"
+        onClick={() => navigate('/graphs')}
+      >
+        View the Data
+      </button>
+      
+      <button 
+        className="bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold"
+        onClick={downloadCSV}
+      >
+        Download the Data
+      </button>
+    </div>
+  </div>
+</section>
+
+           {/* Paper Stack + Description Section - Part 3 */}
+      <section className="middle-section flex">
+        <div className="flex-1 hrf-img-container content-center p-20">
+          {/* Paper stack image */}
+            <img src={paperStack} alt="Paper stack" className="hrf-img 
+            rounded-2xl h-[70%] w-[100%]"/>
+          </div>
+            
+          
+              {/* Description text */}
+        <div className="middle-section-text-container flex-1 content-center p-20">
+            <p className="text-xl">
+              Human Rights First has created a search tool to give you a user-friendly way 
+              to explore a data set of asylum decisions between FY 2016 and May 2021 by the 
+              USCIS Asylum Office, which we received through a Freedom of Information Act 
+              request. You can search for information on asylum grant rates by year, 
+              nationality, and asylum office, visualize the data with charts and heat maps, 
+              and download the data set.
+            </p>
+        </div>
+      </section>
+
+                {/* Statistics Section - Part 4 */}
+                
+     <section className="insights-section flex-c gap-16">
+      <div className="insights-section-header">
+            <h3 className="text-5xl">
+                Systemic Disparity Insights
+            </h3>
+    
+                 {/* 3 Stats Boxes */}
+        <div className="insights-section-details flex justify-center m-14 gap-20 text-2xl">
+                  {/* Stat 1 */}
+          <div className="flex-c-1 gap-12">
+            <div className="insights-details-header">36%</div>
+            <p className="insights-details-content">
+               By the end of the Trump administration, the average asylum office grant rate 
+                had fallen 36% from an average of 44 percent in fiscal year 2016 to 28 percent 
+                in fiscal year 2020<sup>2</sup>.
+            </p>
+          </div>
+
+              {/* Stat 2 */}
+        <div className="flex-c-1 gap-12">
+              <div className="insights-details-header">5%</div>
+              <p className="insights-details-content">
+                The New York asylum office grant rate dropped to 5 percent in fiscal year 2020.
+              </p>
+        </div>
+
+                {/* Stat 3 */}
+        <div className="flex-c-1 gap-12">
+              <div className="insights-details-header">6x Lower</div>
+              <p className="inside-details-content">
+                Between fiscal year 2017 and 2020, the New York asylum office's average grant 
+                rate was 6 times lower than the San Francisco asylum office.
+              </p>
+        </div>
+        </div>
+
+                 {/* Two Buttons - STACKED VERTICALLY */}
+      <section className="read-more-section">
+                 {/* Button 1: Read More - Grey Box */}
+          
+               <button class = "primary-c text-white px-4 py-2"> Read More </button>  
+         </section>
+
+                  {/* Button 2: Back To Top - Plain Text BELOW */}
+          <section class = "back-to-top p-16">
+               <button class = "back-to-top front-medium"> Back To Top ^ </button>    
+          </section>
+      
+    </div>
+    </section>
+
+     
+
+               {/* Hidden debug info */}
+        <div className='hidden'>
+               {'Type this into Canvas: ' + decodeBase64('VGltZTJDb2RlIQ==')}
+        </div>
+        </div>
+           );
+          };
