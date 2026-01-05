@@ -24,9 +24,9 @@ export const LandingPage = () => {
     <div className="flex-c w-[100vw] secondary-">
 
       {/* Hero Section - Part 1 */}
-      <section className="primary-c text-white py-16 px-8 md:px-16">
+      <section className="flex primary-c pt-4 pb-8">
         <div className="flex-c mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-6xl mb-8 text-white">
             Asylum Office Grant Rate Tracker
           </h1>
           <h3 className="text-white"> 
@@ -156,12 +156,12 @@ export const LandingPage = () => {
       <section className="read-more-section">
                  {/* Button 1: Read More - Grey Box */}
           
-               <button class = "primary-c text-white px-4 py-2"> Read More </button>  
+               <button className = "primary-c text-white px-4 py-2"> Read More </button>  
          </section>
 
                   {/* Button 2: Back To Top - Plain Text BELOW */}
-          <section class = "back-to-top p-16">
-               <button class = "back-to-top front-medium"> Back To Top ^ </button>    
+          <section className = "back-to-top p-16">
+               <button className = "back-to-top front-medium"> Back To Top ^ </button>    
           </section>
       
     </div>
