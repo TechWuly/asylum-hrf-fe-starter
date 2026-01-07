@@ -161,7 +161,7 @@ export const LandingPage = () => {
 
                   {/* Button 2: Back To Top - Plain Text BELOW */}
           <section className = "back-to-top p-16">
-               <button className = "back-to-top front-medium"> Back To Top ^ </button>    
+               <button className = "back-to-top font-medium"> Back To Top ^ </button>    
           </section>
       
     </div>
